@@ -476,10 +476,15 @@ class AssemBlocks(AssemBlocksConstants):
             display_flags |= pygame.NOFRAME
         self.screen_size = (config.get("screen_width", screen_width), config.get("screen_height", screen_height))
         self.screen_surface = pygame.display.set_mode(self.screen_size, display_flags)
+        self.mouse_x_ratio = self.screen_size[0]/screen_width
+        self.mouse_y_ratio = self.screen_size[1]/screen_height
 
     def __init__(self):
         self.set_screen_from_config()
         load_images()
+        self.scaled_icon = pygame.transform.scale(images["robot"], (32, 32))
+        pygame.display.set_caption("AssemBlocks")
+        pygame.display.set_icon(self.scaled_icon)
 
         self.state = self.STATE_LEVEL_SELECTOR
         self.difficulties = (
@@ -597,6 +602,7 @@ class AssemBlocks(AssemBlocksConstants):
 
     def events(self):
         pos = pygame.mouse.get_pos()
+        pos = (int(pos[0]/self.mouse_x_ratio), int(pos[1]/self.mouse_y_ratio))
         self.check_hover(pos)
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
