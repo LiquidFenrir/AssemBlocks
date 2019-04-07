@@ -1,0 +1,136 @@
+{
+    "grid_coords": true,
+    "info": {
+        "description": "Play this to learn how the game works!",
+        "title": "Tutorial 1: marks and painting"
+    },
+    "limitations": {
+        "disabled": [
+            "LEFT",
+            "GRAB",
+            "DROP"
+        ],
+        "memory_size": 0,
+        "stack_size": 0,
+        "subprograms": 0
+    },
+    "mission": "For this first task, you will have to paint every marked square.\nBut you can only know if a square is painted, not marked.\n\nHINT: read the manual to know the instructions to use",
+    "tests": [
+        {
+            "grid_start": [
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_painted",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty"
+                ],
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_marked",
+                    "square_empty",
+                    "square_marked",
+                    "square_marked",
+                    "square_empty",
+                    "square_marked",
+                    "square_marked",
+                    "square_empty"
+                ]
+            ],
+            "grid_wanted": [
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_painted",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty"
+                ],
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_painted",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty"
+                ]
+            ],
+            "height": 2,
+            "robot_column": 0,
+            "robot_row": 0,
+            "width": 10
+        },
+        {
+            "grid_start": [
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty"
+                ],
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_marked",
+                    "square_marked",
+                    "square_marked",
+                    "square_marked",
+                    "square_marked",
+                    "square_empty"
+                ]
+            ],
+            "grid_wanted": [
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty"
+                ],
+                [
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_empty",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_painted",
+                    "square_empty"
+                ]
+            ],
+            "height": 2,
+            "robot_column": 1,
+            "robot_row": 0,
+            "width": 10
+        }
+    ]
+}

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<title>AssemBlocks manual</title>
+<style>
+table, th, td {
+    border: 1px solid black;
+}
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align: center;">AssemBlocks instruction manual</h1>
+<div>
+    <p>
+    Type in your code with the keyboard, then press F5 to start running, and read the console window to see the error or if it completed fine.</br>
+    If you hit an infinite loop or want to exit the simulation and haven't reached the end or an error yet, press F6 or ESCAPE</br>
+    The simulation will stop if you complete the task, no need to add checks
+    </p>
+
+    <table style="width:100%">
+    <caption>The different available registers</caption>
+    <tr>
+        <th>Register name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>A</td>
+        <td>General purpose register</td>
+    </tr>
+    <tr>
+        <td>B</td>
+        <td>General purpose register</td>
+    </tr>
+    <tr>
+        <td>C</td>
+        <td>General purpose register</td>
+    </tr>
+    <tr>
+        <td>D</td>
+        <td>General purpose register</td>
+    </tr>
+    <tr>
+        <td>T</td>
+        <td>Test result register. Can be used as a general purpose register, but note its contents will be overwritten every time you use a TEST or CHECKPAINT instruction</td>
+    </tr>
+    </table>
+    </br>
+
+    <table style="width:100%">
+    <caption>The different available operations for the TEST instruction</caption>
+    <tr>
+        <th>Operation</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>==</td>
+        <td>Equality check</td>
+    </tr>
+    <tr>
+        <td>!=</td>
+        <td>Not equal</td>
+    </tr>
+    <tr>
+        <td>&lt </td>
+        <td>Less than</td>
+    </tr>
+    <tr>
+        <td>&lt=</td>
+        <td>Less than or equal</td>
+    </tr>
+    <tr>
+        <td>&gt </td>
+        <td>Greater than</td>
+    </tr>
+    <tr>
+        <td>&gt=</td>
+        <td>Greater than or equal</td>
+    </tr>
+    </table>
+    </br>
+
+    <table style="width:100%">
+    <caption>Arithmetic and Logic instructions</caption>
+    <tr>
+        <th>Instruction</th>
+        <th>Operands</th>
+        <th>Example</th>
+        <th>Action</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>SET</td>
+        <td>Register, Register or Value</td>
+        <td>SET A B</br>SET A 5</td>
+        <td>A = B</br>A = 5</td>
+        <td>Sets the first register (the destination) to the value of the second operand</td>
+    </tr>
+    <tr>
+        <td>TEST</td>
+        <td>Register or Value, Operation, Register or Value</td>
+        <td>TEST A == B</br>TEST A &lt 5</br>TEST 3 != 9</td>
+        <td>T = A == B</br>T = A &lt 5</br>T = 3 != 9</td>
+        <td>Sets the T register to 1 if the test is true, 0 if it's false</td>
+    </tr>
+    <tr>
+        <td>ADD</td>
+        <td>Register, Register or Value, Register or Value</td>
+        <td>ADD A A 5</br>ADD A B C</td>
+        <td>A = A + 5</br>A = B + C</td>
+        <td>Sets the destination register to the value of the two second operands plus the value of the third operand</td>
+    </tr>
+    <tr>
+        <td>SUB</td>
+        <td>Register, Register or Value, Register or Value</td>
+        <td>SUB A A 5</br>SUB A B C</td>
+        <td>A = A - 5</br>A = B - C</td>
+        <td>Sets the destination register to the value of the two second operands minus the value of the third operand</td>
+    </tr>
+    <tr>
+        <td>MUL</td>
+        <td>Register, Register or Value, Register or Value</td>
+        <td>MUL A A 5</br>MUL A B C</td>
+        <td>A = A * 5</br>A = B * C</td>
+        <td>Sets the destination register to the value of the two second operands times the value of the third operand</td>
+    </tr>
+    <tr>
+        <td>DIV</td>
+        <td>Register, Register or Value, Register or Value</td>
+        <td>DIV A A 5</br>DIV A B C</td>
+        <td>A = A / 5</br>A = B / C</td>
+        <td>Sets the destination register to the value of the two second operands divided the value of the third operand (euclidian division, no decimals)</td>
+    </tr>
+    <tr>
+        <td>MOD</td>
+        <td>Register, Register or Value, Register or Value</td>
+        <td>MOD A A 5</br>MOD A B C</td>
+        <td>A = A % 5</br>A = B % C</td>
+        <td>Sets the destination register to the value of the two second operands mod the value of the third operand</td>
+    </tr>
+    <tr>
+        <td>DIVMOD</td>
+        <td>Register, Register or Value, Register or Value</td>
+        <td>DIVMOD A B A 5</br>DIVMOD A B C D</td>
+        <td>A = A / 5 and B = A % 5</br>A = C / D and B = C % D</td>
+        <td>The DIV and MOD instruction combined. Thanks Python for the inspiration. Should be more efficient than doing them separately, and takes less space.</td>
+    </tr>
+    </table>
+    </br>
+
+    <table style="width: 100%;">
+    <caption>Robot control instructions</caption>
+    <tr>
+        <th>Instruction</th>
+        <th>Operands</th>
+        <th>Example</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>UP</td>
+        <td>None</td>
+        <td>UP</td>
+        <td>Moves the robot up 1 row, errors if it goes out of bounds</td>
+    </tr>
+    <tr>
+        <td>DOWN</td>
+        <td>None</td>
+        <td>DOWN</td>
+        <td>Moves the robot down 1 row, errors if it goes out of bounds</td>
+    </tr>
+    <tr>
+        <td>LEFT</td>
+        <td>None</td>
+        <td>LEFT</td>
+        <td>Moves the robot left 1 column, errors if it goes out of bounds</td>
+    </tr>
+    <tr>
+        <td>RIGHT</td>
+        <td>None</td>
+        <td>RIGHT</td>
+        <td>Moves the robot right 1 column, errors if it goes out of bounds</td>
+    </tr>
+    <tr>
+        <td>CHECKPAINT</td>
+        <td>None</td>
+        <td>CHECKPAINT</td>
+        <td>Sets the T register to 1 if the square the robot is on is painted, 0 otherwise</td>
+    </tr>
+    <tr>
+        <td>PAINT</td>
+        <td>None</td>
+        <td>PAINT</td>
+        <td>Paints the square the robot is on if it's marked, errors if it's not</td>
+    </tr>
+    <tr>
+        <td>READ</td>
+        <td>Register</td>
+        <td>READ A</td>
+        <td>Reads the number on the square the robot is on into the specified register, errors if there's no number to read</td>
+    </tr>
+    <tr>
+        <td>WRITE</td>
+        <td>Register or value</td>
+        <td>WRITE A</br>WRITE 5</td>
+        <td>Writes the specified number on the square the robot is on, errors if there was no number beforehand</td>
+    </tr>
+    <tr>
+        <td>GRAB</td>
+        <td>None</td>
+        <td>GRAB</td>
+        <td>Grabs the shape on the square the robot is on to move it later on, errors if there's nothing to grab, or if the robot is already holding something</td>
+    </tr>
+    <tr>
+        <td>DROP</td>
+        <td>None</td>
+        <td>DROP</td>
+        <td>Drops the held shape on the square the robot is on, filling the hole if there's any. Will error if there's already a shape there, or if the hole doesn't match</td>
+    </tr>
+    <tr>
+        <td>ROW</td>
+        <td>Register</td>
+        <td>ROW A</td>
+        <td>Gets the robot's current row number and puts it in the specified register, only available if the coordinates are visible. Starts at 1.</td>
+    </tr>
+    <tr>
+        <td>COLUMN</td>
+        <td>Register</td>
+        <td>COLUMN A</td>
+        <td>Gets the robot's current column number and puts it in the specified register, only available if the coordinates are visible. Starts at 1.</td>
+    </tr>
+    </table>
+    </br>
+
+    <table style="width: 100%;">
+    <caption>Control flow instructions</caption>
+    <tr>
+        <th>Instruction</th>
+        <th>Operands</th>
+        <th>Example</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>CALL</td>
+        <td>Register or value</td>
+        <td>CALL 1</br>CALL A</td>
+        <td>Subprogram/Function call, jumps to the start of the page specified by the value or register, only available if there are subprograms</td>
+    </tr>
+    <tr>
+        <td>RETURN</td>
+        <td>None</td>
+        <td>RETURN</td>
+        <td>As the name imples, returns from a subprogram/function. Goes back to where the last CALL was, only available if there are subprograms</td>
+    </tr>
+    <tr>
+        <td>JMP</td>
+        <td>Register or value</td>
+        <td>JMP 00</br>JMP A</td>
+        <td>Unconditional jump. Jumps to the line specified by the register or value (in hexadecimal, unlike the other instructions)</td>
+    </tr>
+    <tr>
+        <td>JMPT</td>
+        <td>Register or value</td>
+        <td>JMPT 00</br>JMPT A</td>
+        <td>Same as JMP, but only when the T register DOES NOT contain 0</td>
+    </tr>
+    <tr>
+        <td>JMPF</td>
+        <td>Register or value</td>
+        <td>JMPF 00</br>JMPF A</td>
+        <td>Same as JMP, but only when the T register DOES contain 0</td>
+    </tr>
+    <tr>
+        <td>JRO</td>
+        <td>Register or value</td>
+        <td>JRO 1</br>JRO -3</br>JRO A</td>
+        <td>Unconditional relative jump. JRO 0 is an infinite loop, using a negative number will go backwards.</td>
+    </tr>
+    </table>
+    </br>
+    
+    <table style="width: 100%;">
+    <caption>External devices instructions</caption>
+    <tr>
+        <th>Instruction</th>
+        <th>Operands</th>
+        <th>Example</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>PUSH</td>
+        <td>Register or value</td>
+        <td>PUSH 1</br>PUSH A</td>
+        <td>Pushes a value to the top of the stack, only available if there is a stack module, will error if the stack is full</td>
+    </tr>
+    <tr>
+        <td>POP</td>
+        <td>Register</td>
+        <td>POP A</td>
+        <td>Removes a value from the top of the stack and puts it in the destination register, only available if there is a stack module, will error if the stack is empty</td>
+    </tr>
+    <tr>
+        <td>STORE</td>
+        <td>Register or value, Register or value</td>
+        <td>STORE A B</br>STORE 0 5</td>
+        <td>Writes the value of the second operand to the address of the first operand, only available if there is a RAM module, will error if the address is outside the [0:RAM size[ range</td>
+    </tr>
+    <tr>
+        <td>LOAD</td>
+        <td>Register, Register or value</td>
+        <td>LOAD A B</br>LOAD A 0</td>
+        <td>Reads the value at the address specified by the second operand into the destination register, only available if there is a RAM module, will error if the address is outside the [0:RAM size[ range</td>
+    </tr>
+    </table>
+    </br>
+
+</div>
+
+</body>
+
+</html>
